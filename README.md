@@ -85,3 +85,11 @@ please note that all python code should run on both anaconda root environment on
 see "trained-model" directory. "model-blueprint.txt" contains layer-by-layer description of deep ccn architecture used in my facenet implementation. i saved each layer's weights (w) and biases (b) as .npy files. for instance, "w5.npy" contains the weights for the 5th variable layer (not including max pools, normalizations, etc.)
 
 see "transform-images_npy-to-embeddings.py" in "use-trained-model" directory for example on how to load saved  weights/biases to  use model.  i realize this is not as clean as a single model file but it was much faster to load than tensorflow's save graph/model method
+
+# how to train the model from scratch
+see "train-model-from-scratch" directory
+
+to train, simply run "train.py". this trains the model (see "model-blueprint.txt" in "trained-model" directory) for 100,000 iterations of mini-batch size 128 using the triplet loss. the training split of pubfig83 identities/images is in "/recognizer/pubfig83-train". it prints 2 outputs from our generator just to see that it works and an example triplet of images. finally it saves all the weight and biases at the end of training. see trained model section of this readme
+
+the "recognizer" directory contains the meat of model training. the training and test splits of the dataset people/images are in their respective directories. "model.py" defines the cnn model. "tf_dataset.py" builds the tensorflow data input pipline. "triplet_generator.py" builds the iterator which generates random samples of triplets for training
+
