@@ -115,4 +115,4 @@ the image .npy files are not copied into the  github repository for size reasons
 (iii) tsne of "known" testing data with training centroids  
 (iv) tsne of "known" and "unknown" testing data with training centroids
 
-5. run "test-embeddings.npy". see output description under project description section
+5. run "testing.npy". see output description under project description section
