@@ -1,0 +1,55 @@
+input:
+mini-batch of 128x128 rgb photos in (mini_batch_size, 128, 128, 3) format, normalized between 0 and 1
+
+** convolution kernels are in (height, width, in_channels, out_channels) format
+** relu follows all convolution and fully connected layers
+
+layer 1
+convolution with (3, 3, 3, 20) kernel with strides 1 and same padding
+
+layer 2
+convolution with (3, 3, 20, 40) kernel with strides 1 and same padding
+
+layer 3
+max pool with window and stride size of 2x2
+
+layer 4
+convolution with (3, 3, 40, 60) kernel with strides 1 and same padding
+
+layer 5
+convolution with (3, 3, 60, 80) kernel with strides 1 and same padding
+
+layer 6
+max pool with window and stride size of 2x2
+
+layer 7
+convolution with (3, 3, 80, 100) kernel with strides 1 and same padding
+
+layer 8
+convolution with (3, 3, 100, 100) kernel with strides 1 and same padding
+
+layer 9
+max pool with window and stride size of 2x2
+
+layer 10
+convolution with (3, 3, 100, 100) kernel with strides 1 and same padding
+
+layer 11
+convolution with (3, 3, 100, 100) kernel with strides 1 and same padding
+
+layer 12
+max pool with window and stride size of 2x2
+
+** flatten mini-batch
+
+layer 13
+fully connected to dim 2000
+
+layer 14
+fully connected to dim 1000
+
+layer 15
+fully connected to dim 128
+
+layer 16
+normalize to ||x||=1
