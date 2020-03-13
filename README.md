@@ -12,13 +12,13 @@ output: (i) testing only on 63 known identities, testing.py computes top-1 and t
 # required python packages
 python packages my code uses:
 
-numpy 
-tensorflow
-os
-glob
-pylab
-sklearn
-random
+numpy  
+tensorflow  
+os  
+glob  
+pylab  
+sklearn  
+random  
 
 i ran some of my python code on my local laptop and on some on my research lab's gpu servers (mainly training model). my code is basically a straightforward use of tensorflow and numpy so there are no important dependencies, etc. but for completeness i will list python environments/packages of each. 
 
@@ -92,4 +92,22 @@ see "train-model-from-scratch" directory
 to train, simply run "train.py". this trains the model (see "model-blueprint.txt" in "trained-model" directory) for 100,000 iterations of mini-batch size 128 using the triplet loss. the training split of pubfig83 identities/images is in "/recognizer/pubfig83-train". it prints 2 outputs from our generator just to see that it works and an example triplet of images. finally it saves all the weight and biases at the end of training. see trained model section of this readme
 
 the "recognizer" directory contains the meat of model training. the training and test splits of the dataset people/images are in their respective directories. "model.py" defines the cnn model. "tf_dataset.py" builds the tensorflow data input pipline. "triplet_generator.py" builds the iterator which generates random samples of triplets for training
+
+** be careful that no ".DS_Store" folders appear in ""/recognizer/pubfig83-train" or "/recognizer/pubfig83-test" as they will cause error with dictionary building. i don't know what they are but sometimes appear randomly in my github
+
+# how to use trained model
+see "use-trained-model" directory. many of the files are copied over from "train-model-from-scratch" so the user who downloads repository doesn't have to move things or redefine paths
+
+1. first run "people-to-class_num-dictionary.py" to create a .npy  file holding the dictionary between celebrity name/identity and class number i.e. 0-63. the output is already created in the github repository
+
+2. run "convert-jpg_images-to-npy.py" to convert all jpg images of people into .npy arrays and concatenate them into single .npy file. i know this must be horrible practice but it was the easiest to implement to feed into tensorflow model. this almost certainly needs to be run on a gpu server for speed. the output of this code will be 4 files:  
+(i) train-images.npy - (9295, 128, 128, 3) array of  all training images  
+(ii) train-labels.npy - (9295) array of all training image labels  
+(iii) test-images.npy - (4543, 128, 128, 3) array of  all test images  
+(iv) test-labels.npy - (4543) array of all test image labels  
+the image .npy files are not copied into the  github repository for size reasons. but they are not strictly needed since i do save the embeddings of all images - see next line
+
+3. 
+
+
 
