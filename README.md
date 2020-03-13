@@ -1,6 +1,14 @@
 # facenet-cs496
 alex cao's implementation of facenet on pubfig83 for cs 496 (winter 2020 with prof. liu)
 
+# project description
+the problem this project is targeting is facial recognition of a library of people. so given a library of identities, we'd like to classify a test face photo as one of the given identities or unknown. this project solves this problem by implementing a version of the facenet model (https://arxiv.org/abs/1503.03832) combined with thresholding and nearest centroid on the embedding.
+
+i train my version of the facenet model (smaller cnn network, same triplet loss) on the first 63 identities from the pubfig83 dataset (each identity has over 100 face photos). i reserve 20 photos from each of those identities for testing. i test my model on all 83 identities (20 new identities with all photos and 63 known/trained identities with reserved testing photos). i compute the centroid for each training identity's embedding. for classification, if the distance to the nearest centroid is greater than some threshold, classify as unknown, otherwise classify as nearest centroid's identity.
+
+input: pubfig83 dataset testing split, library of 83 people with multiple photos each
+output: (i) testing only on 63 known identities, testing.py computes top-1 and top-6 accuracy as well as respective guesses and (ii) testing on all  identities, testing.py computes top-1 accuracies (63 identities plus unknown class) for a threshold sweep
+
 # required python packages
 python packages my code uses:
 
