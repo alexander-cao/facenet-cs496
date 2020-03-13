@@ -91,7 +91,7 @@ see "train-model-from-scratch" directory
 
 to train, simply run "train.py". this trains the model (see "model-blueprint.txt" in "trained-model" directory) for 100,000 iterations of mini-batch size 128 using the triplet loss. the training split of pubfig83 identities/images is in "/recognizer/pubfig83-train". it prints 2 outputs from our generator just to see that it works and an example triplet of images. finally it saves all the weight and biases at the end of training. see trained model section of this readme
 
-the "recognizer" directory contains the meat of model training. the training and test splits of the dataset people/images are in their respective directories. "model.py" defines the cnn model. "tf_dataset.py" builds the tensorflow data input pipline. "triplet_generator.py" builds the iterator which generates random samples of triplets for training
+the "recognizer" directory contains the meat of model training. the training and test splits of the dataset people/images are in their respective directories. "model.py" defines the cnn model. "tf_dataset.py" builds the tensorflow data input pipeline. "triplet_generator.py" builds the iterator which generates random samples of triplets for training
 
 ** be careful that no ".DS_Store" folders appear in ""/recognizer/pubfig83-train" or "/recognizer/pubfig83-test" as they will cause error with dictionary building. i don't know what they are but sometimes appear randomly in my github
 
