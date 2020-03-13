@@ -59,7 +59,7 @@ protobuf             3.6.1
 pycurl               7.43.0                
 pygobject            3.20.0                
 pyparsing            2.4.0                 
-python-apt           1.1.0b1+ubuntu0.16.4.2
+python-apt           1.1.0b1+ubuntu0.16.4.2   
 python-dateutil      2.8.0                 
 pytz                 2019.1                
 PyYAML               5.1                   
