@@ -6,7 +6,7 @@ the problem this project is targeting is facial recognition of a library of peop
 
 i train my version of the facenet model (smaller cnn network, same triplet loss) on the first 63 identities from the pubfig83 dataset (each identity has over 100 face photos). i reserve 20 photos from each of those identities for testing. i test my model on all 83 identities (20 new identities with all photos and 63 known/trained identities with reserved testing photos). i compute the centroid for each training identity's embedding. for classification, if the distance to the nearest centroid is greater than some threshold, classify as unknown, otherwise classify as nearest centroid's identity.
 
-input: pubfig83 dataset testing split, library of 83 people with multiple photos each
+input: pubfig83 dataset testing split, library of 83 people with multiple photos each  
 output: (i) testing only on 63 known identities, testing.py computes top-1 and top-6 accuracy as well as respective guesses and (ii) testing on all  identities, testing.py computes top-1 accuracies (63 identities plus unknown class) for a threshold sweep
 
 # required python packages
@@ -107,7 +107,12 @@ see "use-trained-model" directory. many of the files are copied over from "train
 (iv) test-labels.npy - (4543) array of all test image labels  
 the image .npy files are not copied into the  github repository for size reasons. but they are not strictly needed since i do save the embeddings of all images - see next line
 
-3. 
+3. run "transform-images_npy-to-embeddings.py" but this assumes you've completed above step (2). this script runs all images (.npy format) through tensorflow model loaded from .npy weights/biases files and saves respective 128-dimensional embeddings in same format i.e. (9295, 128) array, etc.  the output is: "train-embeddings.npy" and "test-embeddings.npy"
 
+4. run "plot-embeddings.py" to visualize training/testing embeddings. outputs:  
+(i) tsne of training data with corresponding triplet of images   
+(ii) k-means sse plot for training data  
+(iii) tsne of "known" testing data with training centroids  
+(iv) tsne of "known" and "unknown" testing data with training centroids
 
-
+5. run "test-embeddings.npy". see output description under project description section
