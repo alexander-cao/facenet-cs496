@@ -79,4 +79,9 @@ urllib3              1.24.2
 Werkzeug             0.14.1                
 wheel                0.29.0 
 
-please note that all python code should run on both anaconda root environment on local computer and docker image dklabjan/keras-gpu.
+please note that all python code should run on both anaconda root environment on local computer and docker image "dklabjan/keras-gpu".
+
+# trained model
+see "trained-model" directory. "model-blueprint.txt" contains layer-by-layer description of deep ccn architecture used in my facenet implementation. i saved each layer's weights (w) and biases (b) as .npy files. for instance, "w5.npy" contains the weights for the 5th variable layer (not including max pools, normalizations, etc.)
+
+see "transform-images_npy-to-embeddings.py" in "use-trained-model" directory for example on how to load saved  weights/biases to  use model.  i realize this is not as clean as a single model file but it was much faster to load than tensorflow's save graph/model method
