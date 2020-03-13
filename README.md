@@ -20,9 +20,9 @@ pylab
 sklearn  
 random  
 
-i ran some of my python code on my local laptop and on some on my research lab's gpu servers (mainly training model). my code is basically a straightforward use of tensorflow and numpy so there are no important dependencies, etc. but for completeness i will list python environments/packages of each. 
+i ran some of my python code on my local laptop (spyder) and on some on my research lab's gpu servers (mainly training model). my code is basically a straightforward use of tensorflow and numpy so there are no important dependencies, etc. but for completeness i will list python environments/packages of each. 
 
-on my local laptop i simply use the base/root environment from anaconda (updated 2019). on the gpu servers, the docker image i use can be found on the docker hub as dklabjan/keras-gpu. it contains the following packages:
+on my local laptop i simply use the spyder base/root environment from anaconda (updated 2019). on the gpu servers, the docker image i use can be found on the docker hub as dklabjan/keras-gpu. it contains the following packages:
 
 Package              Version               
 -------------------- ----------------------
@@ -79,7 +79,7 @@ urllib3              1.24.2
 Werkzeug             0.14.1                
 wheel                0.29.0 
 
-please note that all python code should run on both anaconda root environment on local computer and docker image "dklabjan/keras-gpu".
+please note that all python code should run on both anaconda root environment (spyder) on local computer and docker image "dklabjan/keras-gpu".
 
 # trained model
 see "trained-model" directory. "model-blueprint.txt" contains layer-by-layer description of deep ccn architecture used in my facenet implementation. i saved each layer's weights (w) and biases (b) as .npy files. for instance, "w5.npy" contains the weights for the 5th variable layer (not including max pools, normalizations, etc.)
